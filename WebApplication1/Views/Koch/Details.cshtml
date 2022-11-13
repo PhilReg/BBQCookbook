@@ -1,0 +1,58 @@
+﻿@model BBQLibary.Koch
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Koch</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nutzerkennung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nutzerkennung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Equipment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Equipment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Zutaten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zutaten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Holz)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Holz)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bewertung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bewertung)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
