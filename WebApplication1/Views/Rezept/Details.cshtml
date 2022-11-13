@@ -1,0 +1,50 @@
+﻿@model BBQLibary.Rezept
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Rezept</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Zutatenliste)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zutatenliste)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vorgehen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vorgehen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Holzart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Holzart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Equipmentliste)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Equipmentliste)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

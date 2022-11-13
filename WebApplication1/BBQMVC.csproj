@@ -128,6 +128,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KochController.cs" />
+    <Compile Include="Controllers\KochvorgangController.cs" />
+    <Compile Include="Controllers\RezeptController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -174,6 +176,16 @@
     <Content Include="Views\Koch\Details.cshtml" />
     <Content Include="Views\Koch\Edit.cshtml" />
     <Content Include="Views\Koch\Index.cshtml" />
+    <Content Include="Views\Kochvorgang\Create.cshtml" />
+    <Content Include="Views\Kochvorgang\Delete.cshtml" />
+    <Content Include="Views\Kochvorgang\Details.cshtml" />
+    <Content Include="Views\Kochvorgang\Edit.cshtml" />
+    <Content Include="Views\Kochvorgang\Index.cshtml" />
+    <Content Include="Views\Rezept\Create.cshtml" />
+    <Content Include="Views\Rezept\Delete.cshtml" />
+    <Content Include="Views\Rezept\Details.cshtml" />
+    <Content Include="Views\Rezept\Edit.cshtml" />
+    <Content Include="Views\Rezept\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
