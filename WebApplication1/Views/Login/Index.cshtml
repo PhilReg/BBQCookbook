@@ -1,0 +1,57 @@
+﻿@model IEnumerable<BBQLibary.Koch>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Select", "Select", 1)
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nutzerkennung)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Equipment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Zutaten)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Holz)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bewertung)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nutzerkennung)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Equipment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Zutaten)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Holz)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bewertung)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
