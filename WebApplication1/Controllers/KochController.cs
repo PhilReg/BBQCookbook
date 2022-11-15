@@ -48,6 +48,7 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Nutzerkennung,Equipment,Zutaten,Holz,Bewertung")] Koch koch)
         {
+            koch.Bewertung = "keine Bewertung";
             if (ModelState.IsValid)
             {
                 db.KochSet.Add(koch);

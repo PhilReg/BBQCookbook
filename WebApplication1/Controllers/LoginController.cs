@@ -10,7 +10,7 @@ using BBQLibary;
 
 namespace WebApplication1.Controllers
 {
-    public class LoginController : Controller
+    public class LoginController : Controller //Basis controller anlegen und davon erben
     {
         private Model1Container db = new Model1Container();
 
