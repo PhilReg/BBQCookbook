@@ -5,50 +5,51 @@
 }
 
 <h2>Index</h2>
+<label>User ist:</label> @ViewBag.CurrentUser
 
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nutzerkennung)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Equipment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Zutaten)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Holz)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bewertung)
+            </th>
+            <th></th>
+        </tr>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nutzerkennung)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Equipment)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Zutaten)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Holz)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Bewertung)
-        </th>
-        <th></th>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nutzerkennung)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Equipment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Zutaten)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Holz)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bewertung)
+                </td>
+                <td>
+                    @Html.ActionLink("User auswählen", "Select", new { Identification = item.Id })
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nutzerkennung)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Equipment)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Zutaten)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Holz)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Bewertung)
-        </td>
-        <td>
-            @Html.ActionLink("User auswählen", "Index", new { id = item.Id })
-           
-        </td>
-    </tr>
-}
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>

@@ -6,6 +6,7 @@ namespace WebApplication1.Controllers
     {
         public ActionResult Index()
         {
+            setUser();
             return View();
         }
 

@@ -19,19 +19,20 @@ namespace WebApplication1.Controllers
         }
 
         // GET: Login/Details/5
-        public ActionResult Select(int? id)
+        public ActionResult Select(int? Identification)
         {
-            if (id == null)
+            if (Identification == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Koch koch = db.KochSet.Find(id);
+            Koch koch = db.KochSet.Find(Identification);
             if (koch == null)
             {
                 return HttpNotFound();
             }
-            setUserId(id.Value);
-            return Redirect("Index");
+            setUserId(Identification.Value);
+            setUser();
+            return RedirectToAction("Index");
         }
     }
 }

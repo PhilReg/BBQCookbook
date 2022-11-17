@@ -8,29 +8,27 @@ namespace WebApplication1.Controllers
     {
         protected Model1Container db =
               new Model1Container();
-        private Koch _LoggedInKoch = null;
-        protected Koch LoggedInKoch => _LoggedInKoch ?? setUser();
-        private static String UserIDKey = "UserId";
+        private static String UserIdKey = "UserId";
         public Koch setUser()
         {
-            int? userId = Session[UserIDKey] as int?;
+            int? userId = Session[UserIdKey] as int?;
             if (userId == null) return null;
             Koch res = db.KochSet.Find(userId);
             if (res == null) return null;
-            ViewBag.User = res;
+            ViewBag.CurrentUser = res.Nutzerkennung;
             _LoggedInKoch = res;
             return res;
-
         }
+        private Koch _LoggedInKoch = null;
+        protected Koch LoggedInKoch => _LoggedInKoch ?? setUser();
         protected bool hasUser()
         {
             return LoggedInKoch != null;
 
         }
-
         protected void setUserId(int userId)
         {
-            Session[UserIDKey] = userId;
+            Session[UserIdKey] = userId;
         }
     }
 }
