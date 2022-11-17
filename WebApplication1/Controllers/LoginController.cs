@@ -10,10 +10,8 @@ using BBQLibary;
 
 namespace WebApplication1.Controllers
 {
-    public class LoginController : Controller //Basis controller anlegen und davon erben
+    public class LoginController : BaseController
     {
-        private Model1Container db = new Model1Container();
-
         // GET: Login
         public ActionResult Index()
         {
@@ -32,6 +30,7 @@ namespace WebApplication1.Controllers
             {
                 return HttpNotFound();
             }
+            setUserId(id.Value);
             return Redirect("Index");
         }
     }

@@ -10,7 +10,7 @@ using BBQLibary;
 
 namespace WebApplication1.Controllers
 {
-    public class RezeptController : Controller
+    public class RezeptController : BaseController
     {
         private Model1Container db = new Model1Container();
 
