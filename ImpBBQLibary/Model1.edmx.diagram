@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="697303c7253a430c92ec14e30f020b55" Name="Diagram1" >
+        <EntityTypeShape EntityType="Model1.Koch" Width="1.5" PointX="3.375" PointY="2.375" />
+        <EntityTypeShape EntityType="Model1.Rezept" Width="1.5" PointX="5.875" PointY="2.375" />
+        <EntityTypeShape EntityType="Model1.Kochvorgang" Width="1.5" PointX="8.25" PointY="2.5" />
+        <EntityTypeShape EntityType="Model1.Zutaten" Width="1.5" PointX="0.75" PointY="4.375" />
+        <EntityTypeShape EntityType="Model1.Equipment" Width="1.5" PointX="0.75" PointY="0.5" />
+        <EntityTypeShape EntityType="Model1.Bilder" Width="1.5" PointX="10.75" PointY="2.5" />
+        <AssociationConnector Association="Model1.KochBesitztEquipment" />
+        <AssociationConnector Association="Model1.KochErstelltRezepte" />
+        <AssociationConnector Association="Model1.KochZutaten" />
+        <AssociationConnector Association="Model1.RezeptBestehtausZutaten" />
+        <AssociationConnector Association="Model1.KochvorgangFolgtRezept" />
+        <AssociationConnector Association="Model1.KochFührtausKochvorgang" />
+        <AssociationConnector Association="Model1.KochHatProfilbild" />
+        <AssociationConnector Association="Model1.RezeptHatMusterbilder" />
+        <AssociationConnector Association="Model1.EquipmentHatEquipmentbild" />
+        <AssociationConnector Association="Model1.KochvorgangHatVorgangsbilder" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

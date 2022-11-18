@@ -6,21 +6,21 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using BBQLibary;
+using ImpBBQLibary;
 
 namespace WebApplication1.Controllers
 {
-    public class RezeptController : BaseController
+    public class RezeptsController : BaseController
     {
         private Model1Container db = new Model1Container();
 
-        // GET: Rezept
+        // GET: Rezepts
         public ActionResult Index()
         {
             return View(db.RezeptSet.ToList());
         }
 
-        // GET: Rezept/Details/5
+        // GET: Rezepts/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,18 +35,18 @@ namespace WebApplication1.Controllers
             return View(rezept);
         }
 
-        // GET: Rezept/Create
+        // GET: Rezepts/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Rezept/Create
-        // Aktivieren Sie zum Schutz vor Angriffen durch Overposting die jeweiligen Eigenschaften, mit denen eine Bindung erfolgen soll. 
-        // Weitere Informationen finden Sie unter https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Rezepts/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Zutatenliste,Vorgehen,Holzart,Equipmentliste")] Rezept rezept)
+        public ActionResult Create([Bind(Include = "Id,Rezeptnamen,Vorgehen,Rezeptbewertung")] Rezept rezept)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +58,7 @@ namespace WebApplication1.Controllers
             return View(rezept);
         }
 
-        // GET: Rezept/Edit/5
+        // GET: Rezepts/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -73,12 +73,12 @@ namespace WebApplication1.Controllers
             return View(rezept);
         }
 
-        // POST: Rezept/Edit/5
-        // Aktivieren Sie zum Schutz vor Angriffen durch Overposting die jeweiligen Eigenschaften, mit denen eine Bindung erfolgen soll. 
-        // Weitere Informationen finden Sie unter https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Rezepts/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Zutatenliste,Vorgehen,Holzart,Equipmentliste")] Rezept rezept)
+        public ActionResult Edit([Bind(Include = "Id,Rezeptnamen,Vorgehen,Rezeptbewertung")] Rezept rezept)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace WebApplication1.Controllers
             return View(rezept);
         }
 
-        // GET: Rezept/Delete/5
+        // GET: Rezepts/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -104,7 +104,7 @@ namespace WebApplication1.Controllers
             return View(rezept);
         }
 
-        // POST: Rezept/Delete/5
+        // POST: Rezepts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

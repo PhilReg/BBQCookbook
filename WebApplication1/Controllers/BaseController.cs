@@ -1,4 +1,4 @@
-﻿using BBQLibary;
+﻿using ImpBBQLibary;
 using System;
 using System.Web.Mvc;
 
@@ -15,7 +15,7 @@ namespace WebApplication1.Controllers
             if (userId == null) return null;
             Koch res = db.KochSet.Find(userId);
             if (res == null) return null;
-            ViewBag.CurrentUser = res.Nutzerkennung;
+            ViewBag.CurrentUser = res.Kochname;
             _LoggedInKoch = res;
             return res;
         }

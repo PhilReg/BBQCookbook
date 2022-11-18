@@ -7,26 +7,26 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BBQLibary
+namespace ImpBBQLibary
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Rezept
+    public partial class Equipment
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Rezept()
+        public Equipment()
         {
-            this.Kochvorgang = new HashSet<Kochvorgang>();
+            this.Koch = new HashSet<Koch>();
         }
     
         public int Id { get; set; }
-        public string Zutatenliste { get; set; }
-        public string Vorgehen { get; set; }
-        public string Holzart { get; set; }
-        public string Equipmentliste { get; set; }
+        public string Equipmentnamen { get; set; }
+        public string Beschreibung { get; set; }
+        public int BilderId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Kochvorgang> Kochvorgang { get; set; }
+        public virtual ICollection<Koch> Koch { get; set; }
+        public virtual Bilder Bilder { get; set; }
     }
 }

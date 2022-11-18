@@ -1,4 +1,4 @@
-﻿@model BBQLibary.Rezept
+﻿@model ImpBBQLibary.Rezept
 
 @{
     ViewBag.Title = "Details";
@@ -11,11 +11,11 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Zutatenliste)
+            @Html.DisplayNameFor(model => model.Rezeptnamen)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Zutatenliste)
+            @Html.DisplayFor(model => model.Rezeptnamen)
         </dd>
 
         <dt>
@@ -27,19 +27,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Holzart)
+            @Html.DisplayNameFor(model => model.Rezeptbewertung)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Holzart)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Equipmentliste)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Equipmentliste)
+            @Html.DisplayFor(model => model.Rezeptbewertung)
         </dd>
 
     </dl>

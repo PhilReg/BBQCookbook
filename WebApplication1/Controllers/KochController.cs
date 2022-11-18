@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using BBQLibary;
+using ImpBBQLibary;
 
 namespace WebApplication1.Controllers
 {
@@ -17,7 +17,8 @@ namespace WebApplication1.Controllers
         // GET: Koch
         public ActionResult Index()
         {
-            return View(db.KochSet.ToList());
+            var kochSet = db.KochSet.Include(k => k.Bilder);
+            return View(kochSet.ToList());
         }
 
         // GET: Koch/Details/5
@@ -38,17 +39,17 @@ namespace WebApplication1.Controllers
         // GET: Koch/Create
         public ActionResult Create()
         {
+            ViewBag.BilderId = new SelectList(db.BilderSet, "Id", "Bildernamen");
             return View();
         }
 
         // POST: Koch/Create
-        // Aktivieren Sie zum Schutz vor Angriffen durch Overposting die jeweiligen Eigenschaften, mit denen eine Bindung erfolgen soll. 
-        // Weitere Informationen finden Sie unter https://go.microsoft.com/fwlink/?LinkId=317598.
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nutzerkennung,Equipment,Zutaten,Holz,Bewertung")] Koch koch)
+        public ActionResult Create([Bind(Include = "Id,Kochname,Kochbewertung,BilderId")] Koch koch)
         {
-            koch.Bewertung = "keine Bewertung";
             if (ModelState.IsValid)
             {
                 db.KochSet.Add(koch);
@@ -56,6 +57,7 @@ namespace WebApplication1.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.BilderId = new SelectList(db.BilderSet, "Id", "Bildernamen", koch.BilderId);
             return View(koch);
         }
 
@@ -71,22 +73,24 @@ namespace WebApplication1.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.BilderId = new SelectList(db.BilderSet, "Id", "Bildernamen", koch.BilderId);
             return View(koch);
         }
 
         // POST: Koch/Edit/5
-        // Aktivieren Sie zum Schutz vor Angriffen durch Overposting die jeweiligen Eigenschaften, mit denen eine Bindung erfolgen soll. 
-        // Weitere Informationen finden Sie unter https://go.microsoft.com/fwlink/?LinkId=317598.
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nutzerkennung,Equipment,Zutaten,Holz,Bewertung")] Koch koch)
+        public ActionResult Edit([Bind(Include = "Id,Kochname,Kochbewertung,BilderId")] Koch koch)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(koch).State = System.Data.Entity.EntityState.Modified;
+                db.Entry(koch).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.BilderId = new SelectList(db.BilderSet, "Id", "Bildernamen", koch.BilderId);
             return View(koch);
         }
 

@@ -1,4 +1,4 @@
-﻿@model BBQLibary.Koch
+﻿@model ImpBBQLibary.Koch
 
 @{
     ViewBag.Title = "Details";
@@ -11,43 +11,27 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Nutzerkennung)
+            @Html.DisplayNameFor(model => model.Kochname)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Nutzerkennung)
+            @Html.DisplayFor(model => model.Kochname)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Equipment)
+            @Html.DisplayNameFor(model => model.Kochbewertung)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Equipment)
+            @Html.DisplayFor(model => model.Kochbewertung)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Zutaten)
+            @Html.DisplayNameFor(model => model.Bilder.Bildernamen)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Zutaten)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Holz)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Holz)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Bewertung)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Bewertung)
+            @Html.DisplayFor(model => model.Bilder.Bildernamen)
         </dd>
 
     </dl>

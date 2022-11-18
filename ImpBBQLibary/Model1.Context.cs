@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BBQLibary
+namespace ImpBBQLibary
 {
     using System;
     using System.Data.Entity;
@@ -26,7 +26,10 @@ namespace BBQLibary
         }
     
         public virtual DbSet<Koch> KochSet { get; set; }
-        public virtual DbSet<Kochvorgang> KochvorgangSet { get; set; }
         public virtual DbSet<Rezept> RezeptSet { get; set; }
+        public virtual DbSet<Kochvorgang> KochvorgangSet { get; set; }
+        public virtual DbSet<Zutaten> ZutatenSet { get; set; }
+        public virtual DbSet<Equipment> EquipmentSet { get; set; }
+        public virtual DbSet<Bilder> BilderSet { get; set; }
     }
 }

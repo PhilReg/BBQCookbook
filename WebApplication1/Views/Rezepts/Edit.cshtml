@@ -1,11 +1,10 @@
-﻿@model BBQLibary.Rezept
+﻿@model ImpBBQLibary.Rezept
 
 @{
     ViewBag.Title = "Edit";
 }
 
 <h2>Edit</h2>
-
 
 @using (Html.BeginForm())
 {
@@ -18,10 +17,10 @@
         @Html.HiddenFor(model => model.Id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Zutatenliste, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Rezeptnamen, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Zutatenliste, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Zutatenliste, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Rezeptnamen, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Rezeptnamen, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -34,18 +33,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Holzart, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Rezeptbewertung, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Holzart, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Holzart, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Equipmentliste, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Equipmentliste, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Equipmentliste, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Rezeptbewertung, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Rezeptbewertung, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -60,7 +51,3 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

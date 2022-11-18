@@ -1,4 +1,4 @@
-﻿@model BBQLibary.Kochvorgang
+﻿@model ImpBBQLibary.Kochvorgang
 
 @{
     ViewBag.Title = "Details";
@@ -19,11 +19,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Rezept.Zutatenliste)
+            @Html.DisplayNameFor(model => model.Rezept.Rezeptnamen)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Rezept.Zutatenliste)
+            @Html.DisplayFor(model => model.Rezept.Rezeptnamen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Koch.Kochname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Koch.Kochname)
         </dd>
 
     </dl>

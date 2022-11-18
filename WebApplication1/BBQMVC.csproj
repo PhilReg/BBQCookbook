@@ -129,9 +129,9 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KochController.cs" />
-    <Compile Include="Controllers\KochvorgangController.cs" />
+    <Compile Include="Controllers\KochvorgangsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\RezeptController.cs" />
+    <Compile Include="Controllers\RezeptsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -173,22 +173,22 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Koch\Create.cshtml" />
     <Content Include="Views\Koch\Delete.cshtml" />
     <Content Include="Views\Koch\Details.cshtml" />
     <Content Include="Views\Koch\Edit.cshtml" />
     <Content Include="Views\Koch\Index.cshtml" />
-    <Content Include="Views\Kochvorgang\Create.cshtml" />
-    <Content Include="Views\Kochvorgang\Delete.cshtml" />
-    <Content Include="Views\Kochvorgang\Details.cshtml" />
-    <Content Include="Views\Kochvorgang\Edit.cshtml" />
-    <Content Include="Views\Kochvorgang\Index.cshtml" />
-    <Content Include="Views\Rezept\Create.cshtml" />
-    <Content Include="Views\Rezept\Delete.cshtml" />
-    <Content Include="Views\Rezept\Details.cshtml" />
-    <Content Include="Views\Rezept\Edit.cshtml" />
-    <Content Include="Views\Rezept\Index.cshtml" />
-    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Rezepts\Create.cshtml" />
+    <Content Include="Views\Rezepts\Delete.cshtml" />
+    <Content Include="Views\Rezepts\Details.cshtml" />
+    <Content Include="Views\Rezepts\Edit.cshtml" />
+    <Content Include="Views\Rezepts\Index.cshtml" />
+    <Content Include="Views\Kochvorgangs\Create.cshtml" />
+    <Content Include="Views\Kochvorgangs\Delete.cshtml" />
+    <Content Include="Views\Kochvorgangs\Details.cshtml" />
+    <Content Include="Views\Kochvorgangs\Edit.cshtml" />
+    <Content Include="Views\Kochvorgangs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -210,9 +210,9 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BBQLibary\BBQLibary.csproj">
-      <Project>{643d6c5b-ed15-4393-9d5c-386f6b0238cc}</Project>
-      <Name>BBQLibary</Name>
+    <ProjectReference Include="..\ImpBBQLibary\ImpBBQLibary.csproj">
+      <Project>{1c95ffc5-71dd-4a58-b3dc-088b212dc790}</Project>
+      <Name>ImpBBQLibary</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

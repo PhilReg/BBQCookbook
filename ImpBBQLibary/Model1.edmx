@@ -1,0 +1,687 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Model1StoreContainer">
+    <EntitySet Name="KochSet" EntityType="Model1.Store.KochSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RezeptSet" EntityType="Model1.Store.RezeptSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="KochvorgangSet" EntityType="Model1.Store.KochvorgangSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ZutatenSet" EntityType="Model1.Store.ZutatenSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EquipmentSet" EntityType="Model1.Store.EquipmentSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BilderSet" EntityType="Model1.Store.BilderSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="KochBesitztEquipment" EntityType="Model1.Store.KochBesitztEquipment" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="KochZutaten" EntityType="Model1.Store.KochZutaten" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RezeptBestehtausZutaten" EntityType="Model1.Store.RezeptBestehtausZutaten" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RezeptHatMusterbilder" EntityType="Model1.Store.RezeptHatMusterbilder" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="KochvorgangHatVorgangsbilder" EntityType="Model1.Store.KochvorgangHatVorgangsbilder" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_KochBesitztEquipment_Equipment" Association="Model1.Store.FK_KochBesitztEquipment_Equipment">
+      <End Role="Equipment" EntitySet="EquipmentSet" />
+      <End Role="KochBesitztEquipment" EntitySet="KochBesitztEquipment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KochBesitztEquipment_Koch" Association="Model1.Store.FK_KochBesitztEquipment_Koch">
+      <End Role="Koch" EntitySet="KochSet" />
+      <End Role="KochBesitztEquipment" EntitySet="KochBesitztEquipment" />
+    </AssociationSet>
+    <AssociationSet Name="KochErstelltRezepte" Association="Model1.Store.KochErstelltRezepte">
+      <End Role="Koch" EntitySet="KochSet" />
+      <End Role="Rezept" EntitySet="RezeptSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KochZutaten_Koch" Association="Model1.Store.FK_KochZutaten_Koch">
+      <End Role="Koch" EntitySet="KochSet" />
+      <End Role="KochZutaten" EntitySet="KochZutaten" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KochZutaten_Zutaten" Association="Model1.Store.FK_KochZutaten_Zutaten">
+      <End Role="Zutaten" EntitySet="ZutatenSet" />
+      <End Role="KochZutaten" EntitySet="KochZutaten" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RezeptBestehtausZutaten_Zutaten" Association="Model1.Store.FK_RezeptBestehtausZutaten_Zutaten">
+      <End Role="Zutaten" EntitySet="ZutatenSet" />
+      <End Role="RezeptBestehtausZutaten" EntitySet="RezeptBestehtausZutaten" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RezeptBestehtausZutaten_Rezept" Association="Model1.Store.FK_RezeptBestehtausZutaten_Rezept">
+      <End Role="Rezept" EntitySet="RezeptSet" />
+      <End Role="RezeptBestehtausZutaten" EntitySet="RezeptBestehtausZutaten" />
+    </AssociationSet>
+    <AssociationSet Name="KochvorgangFolgtRezept" Association="Model1.Store.KochvorgangFolgtRezept">
+      <End Role="Rezept" EntitySet="RezeptSet" />
+      <End Role="Kochvorgang" EntitySet="KochvorgangSet" />
+    </AssociationSet>
+    <AssociationSet Name="KochFührtausKochvorgang" Association="Model1.Store.KochFührtausKochvorgang">
+      <End Role="Koch" EntitySet="KochSet" />
+      <End Role="Kochvorgang" EntitySet="KochvorgangSet" />
+    </AssociationSet>
+    <AssociationSet Name="KochHatProfilbild" Association="Model1.Store.KochHatProfilbild">
+      <End Role="Bilder" EntitySet="BilderSet" />
+      <End Role="Koch" EntitySet="KochSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RezeptHatMusterbilder_Bilder" Association="Model1.Store.FK_RezeptHatMusterbilder_Bilder">
+      <End Role="Bilder" EntitySet="BilderSet" />
+      <End Role="RezeptHatMusterbilder" EntitySet="RezeptHatMusterbilder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RezeptHatMusterbilder_Rezept" Association="Model1.Store.FK_RezeptHatMusterbilder_Rezept">
+      <End Role="Rezept" EntitySet="RezeptSet" />
+      <End Role="RezeptHatMusterbilder" EntitySet="RezeptHatMusterbilder" />
+    </AssociationSet>
+    <AssociationSet Name="EquipmentHatEquipmentbild" Association="Model1.Store.EquipmentHatEquipmentbild">
+      <End Role="Bilder" EntitySet="BilderSet" />
+      <End Role="Equipment" EntitySet="EquipmentSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KochvorgangHatVorgangsbilder_Bilder" Association="Model1.Store.FK_KochvorgangHatVorgangsbilder_Bilder">
+      <End Role="Bilder" EntitySet="BilderSet" />
+      <End Role="KochvorgangHatVorgangsbilder" EntitySet="KochvorgangHatVorgangsbilder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KochvorgangHatVorgangsbilder_Kochvorgang" Association="Model1.Store.FK_KochvorgangHatVorgangsbilder_Kochvorgang">
+      <End Role="Kochvorgang" EntitySet="KochvorgangSet" />
+      <End Role="KochvorgangHatVorgangsbilder" EntitySet="KochvorgangHatVorgangsbilder" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="KochSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Kochname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Kochbewertung" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BilderId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RezeptSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Rezeptnamen" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Vorgehen" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Rezeptbewertung" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Koch_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KochvorgangSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Protokoll" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RezeptId" Type="int" Nullable="false" />
+    <Property Name="KochId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ZutatenSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Zutatennamen" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Kategorie" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EquipmentSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Equipmentnamen" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Beschreibung" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BilderId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BilderSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Bildernamen" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Bilderart" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ImagePath" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KochBesitztEquipment">
+    <Key>
+      <PropertyRef Name="Equipment_Id" />
+      <PropertyRef Name="Koch_Id" />
+    </Key>
+    <Property Name="Equipment_Id" Type="int" Nullable="false" />
+    <Property Name="Koch_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KochZutaten">
+    <Key>
+      <PropertyRef Name="Koch_Id" />
+      <PropertyRef Name="Zutaten_Id" />
+    </Key>
+    <Property Name="Koch_Id" Type="int" Nullable="false" />
+    <Property Name="Zutaten_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RezeptBestehtausZutaten">
+    <Key>
+      <PropertyRef Name="Zutaten_Id" />
+      <PropertyRef Name="Rezept_Id" />
+    </Key>
+    <Property Name="Zutaten_Id" Type="int" Nullable="false" />
+    <Property Name="Rezept_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RezeptHatMusterbilder">
+    <Key>
+      <PropertyRef Name="Bilder_Id" />
+      <PropertyRef Name="Rezept_Id" />
+    </Key>
+    <Property Name="Bilder_Id" Type="int" Nullable="false" />
+    <Property Name="Rezept_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KochvorgangHatVorgangsbilder">
+    <Key>
+      <PropertyRef Name="Bilder_Id" />
+      <PropertyRef Name="Kochvorgang_Id" />
+    </Key>
+    <Property Name="Bilder_Id" Type="int" Nullable="false" />
+    <Property Name="Kochvorgang_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="KochErstelltRezepte">
+    <End Role="Koch" Type="Model1.Store.KochSet" Multiplicity="1" />
+    <End Role="Rezept" Type="Model1.Store.RezeptSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Koch">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Rezept">
+        <PropertyRef Name="Koch_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KochvorgangFolgtRezept">
+    <End Role="Rezept" Type="Model1.Store.RezeptSet" Multiplicity="1" />
+    <End Role="Kochvorgang" Type="Model1.Store.KochvorgangSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rezept">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kochvorgang">
+        <PropertyRef Name="RezeptId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KochFührtausKochvorgang">
+    <End Role="Koch" Type="Model1.Store.KochSet" Multiplicity="1" />
+    <End Role="Kochvorgang" Type="Model1.Store.KochvorgangSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Koch">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kochvorgang">
+        <PropertyRef Name="KochId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KochHatProfilbild">
+    <End Role="Bilder" Type="Model1.Store.BilderSet" Multiplicity="1" />
+    <End Role="Koch" Type="Model1.Store.KochSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bilder">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Koch">
+        <PropertyRef Name="BilderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EquipmentHatEquipmentbild">
+    <End Role="Bilder" Type="Model1.Store.BilderSet" Multiplicity="1" />
+    <End Role="Equipment" Type="Model1.Store.EquipmentSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bilder">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Equipment">
+        <PropertyRef Name="BilderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KochBesitztEquipment_Equipment">
+    <End Role="Equipment" Type="Model1.Store.EquipmentSet" Multiplicity="1" />
+    <End Role="KochBesitztEquipment" Type="Model1.Store.KochBesitztEquipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipment">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="KochBesitztEquipment">
+        <PropertyRef Name="Equipment_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KochBesitztEquipment_Koch">
+    <End Role="KochBesitztEquipment" Type="Model1.Store.KochBesitztEquipment" Multiplicity="*" />
+    <End Role="Koch" Type="Model1.Store.KochSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Koch">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="KochBesitztEquipment">
+        <PropertyRef Name="Koch_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KochZutaten_Koch">
+    <End Role="Koch" Type="Model1.Store.KochSet" Multiplicity="1" />
+    <End Role="KochZutaten" Type="Model1.Store.KochZutaten" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Koch">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="KochZutaten">
+        <PropertyRef Name="Koch_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KochZutaten_Zutaten">
+    <End Role="KochZutaten" Type="Model1.Store.KochZutaten" Multiplicity="*" />
+    <End Role="Zutaten" Type="Model1.Store.ZutatenSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Zutaten">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="KochZutaten">
+        <PropertyRef Name="Zutaten_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RezeptBestehtausZutaten_Zutaten">
+    <End Role="Zutaten" Type="Model1.Store.ZutatenSet" Multiplicity="1" />
+    <End Role="RezeptBestehtausZutaten" Type="Model1.Store.RezeptBestehtausZutaten" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zutaten">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RezeptBestehtausZutaten">
+        <PropertyRef Name="Zutaten_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RezeptBestehtausZutaten_Rezept">
+    <End Role="RezeptBestehtausZutaten" Type="Model1.Store.RezeptBestehtausZutaten" Multiplicity="*" />
+    <End Role="Rezept" Type="Model1.Store.RezeptSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Rezept">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RezeptBestehtausZutaten">
+        <PropertyRef Name="Rezept_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RezeptHatMusterbilder_Bilder">
+    <End Role="Bilder" Type="Model1.Store.BilderSet" Multiplicity="1" />
+    <End Role="RezeptHatMusterbilder" Type="Model1.Store.RezeptHatMusterbilder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bilder">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RezeptHatMusterbilder">
+        <PropertyRef Name="Bilder_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RezeptHatMusterbilder_Rezept">
+    <End Role="RezeptHatMusterbilder" Type="Model1.Store.RezeptHatMusterbilder" Multiplicity="*" />
+    <End Role="Rezept" Type="Model1.Store.RezeptSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Rezept">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RezeptHatMusterbilder">
+        <PropertyRef Name="Rezept_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KochvorgangHatVorgangsbilder_Bilder">
+    <End Role="Bilder" Type="Model1.Store.BilderSet" Multiplicity="1" />
+    <End Role="KochvorgangHatVorgangsbilder" Type="Model1.Store.KochvorgangHatVorgangsbilder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bilder">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="KochvorgangHatVorgangsbilder">
+        <PropertyRef Name="Bilder_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KochvorgangHatVorgangsbilder_Kochvorgang">
+    <End Role="KochvorgangHatVorgangsbilder" Type="Model1.Store.KochvorgangHatVorgangsbilder" Multiplicity="*" />
+    <End Role="Kochvorgang" Type="Model1.Store.KochvorgangSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Kochvorgang">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="KochvorgangHatVorgangsbilder">
+        <PropertyRef Name="Kochvorgang_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="KochSet" EntityType="Model1.Koch" />
+          <EntitySet Name="RezeptSet" EntityType="Model1.Rezept" />
+          <EntitySet Name="KochvorgangSet" EntityType="Model1.Kochvorgang" />
+          <EntitySet Name="ZutatenSet" EntityType="Model1.Zutaten" />
+          <EntitySet Name="EquipmentSet" EntityType="Model1.Equipment" />
+          <EntitySet Name="BilderSet" EntityType="Model1.Bilder" />
+          <AssociationSet Name="KochBesitztEquipment" Association="Model1.KochBesitztEquipment">
+            <End Role="Equipment" EntitySet="EquipmentSet" />
+            <End Role="Koch" EntitySet="KochSet" />
+          </AssociationSet>
+          <AssociationSet Name="KochErstelltRezepte" Association="Model1.KochErstelltRezepte">
+            <End Role="Koch" EntitySet="KochSet" />
+            <End Role="Rezept" EntitySet="RezeptSet" />
+          </AssociationSet>
+          <AssociationSet Name="KochZutaten" Association="Model1.KochZutaten">
+            <End Role="Koch" EntitySet="KochSet" />
+            <End Role="Zutaten" EntitySet="ZutatenSet" />
+          </AssociationSet>
+          <AssociationSet Name="RezeptBestehtausZutaten" Association="Model1.RezeptBestehtausZutaten">
+            <End Role="Zutaten" EntitySet="ZutatenSet" />
+            <End Role="Rezept" EntitySet="RezeptSet" />
+          </AssociationSet>
+          <AssociationSet Name="KochvorgangFolgtRezept" Association="Model1.KochvorgangFolgtRezept">
+            <End Role="Rezept" EntitySet="RezeptSet" />
+            <End Role="Kochvorgang" EntitySet="KochvorgangSet" />
+          </AssociationSet>
+          <AssociationSet Name="KochFührtausKochvorgang" Association="Model1.KochFührtausKochvorgang">
+            <End Role="Koch" EntitySet="KochSet" />
+            <End Role="Kochvorgang" EntitySet="KochvorgangSet" />
+          </AssociationSet>
+          <AssociationSet Name="KochHatProfilbild" Association="Model1.KochHatProfilbild">
+            <End Role="Bilder" EntitySet="BilderSet" />
+            <End Role="Koch" EntitySet="KochSet" />
+          </AssociationSet>
+          <AssociationSet Name="RezeptHatMusterbilder" Association="Model1.RezeptHatMusterbilder">
+            <End Role="Bilder" EntitySet="BilderSet" />
+            <End Role="Rezept" EntitySet="RezeptSet" />
+          </AssociationSet>
+          <AssociationSet Name="EquipmentHatEquipmentbild" Association="Model1.EquipmentHatEquipmentbild">
+            <End Role="Bilder" EntitySet="BilderSet" />
+            <End Role="Equipment" EntitySet="EquipmentSet" />
+          </AssociationSet>
+          <AssociationSet Name="KochvorgangHatVorgangsbilder" Association="Model1.KochvorgangHatVorgangsbilder">
+            <End Role="Bilder" EntitySet="BilderSet" />
+            <End Role="Kochvorgang" EntitySet="KochvorgangSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Koch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kochname" Type="String" Nullable="false" />
+          <Property Name="Kochbewertung" Type="String" Nullable="false" />
+          <NavigationProperty Name="Equipment" Relationship="Model1.KochBesitztEquipment" FromRole="Koch" ToRole="Equipment" />
+          <NavigationProperty Name="Rezept" Relationship="Model1.KochErstelltRezepte" FromRole="Koch" ToRole="Rezept" />
+          <NavigationProperty Name="Zutaten" Relationship="Model1.KochZutaten" FromRole="Koch" ToRole="Zutaten" />
+          <NavigationProperty Name="Kochvorgang" Relationship="Model1.KochFührtausKochvorgang" FromRole="Koch" ToRole="Kochvorgang" />
+          <NavigationProperty Name="Bilder" Relationship="Model1.KochHatProfilbild" FromRole="Koch" ToRole="Bilder" />
+          <Property Name="BilderId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rezept">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rezeptnamen" Type="String" Nullable="false" />
+          <Property Name="Vorgehen" Type="String" Nullable="false" />
+          <Property Name="Rezeptbewertung" Type="String" Nullable="false" />
+          <NavigationProperty Name="Koch" Relationship="Model1.KochErstelltRezepte" FromRole="Rezept" ToRole="Koch" />
+          <NavigationProperty Name="Zutaten" Relationship="Model1.RezeptBestehtausZutaten" FromRole="Rezept" ToRole="Zutaten" />
+          <NavigationProperty Name="Kochvorgang" Relationship="Model1.KochvorgangFolgtRezept" FromRole="Rezept" ToRole="Kochvorgang" />
+          <NavigationProperty Name="Bilder" Relationship="Model1.RezeptHatMusterbilder" FromRole="Rezept" ToRole="Bilder" />
+        </EntityType>
+        <EntityType Name="Kochvorgang">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Protokoll" Type="String" Nullable="false" />
+          <NavigationProperty Name="Rezept" Relationship="Model1.KochvorgangFolgtRezept" FromRole="Kochvorgang" ToRole="Rezept" />
+          <Property Name="RezeptId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Koch" Relationship="Model1.KochFührtausKochvorgang" FromRole="Kochvorgang" ToRole="Koch" />
+          <Property Name="KochId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bilder" Relationship="Model1.KochvorgangHatVorgangsbilder" FromRole="Kochvorgang" ToRole="Bilder" />
+        </EntityType>
+        <EntityType Name="Zutaten">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Zutatennamen" Type="String" Nullable="false" />
+          <Property Name="Kategorie" Type="String" Nullable="false" />
+          <NavigationProperty Name="Koch" Relationship="Model1.KochZutaten" FromRole="Zutaten" ToRole="Koch" />
+          <NavigationProperty Name="Rezept" Relationship="Model1.RezeptBestehtausZutaten" FromRole="Zutaten" ToRole="Rezept" />
+        </EntityType>
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Equipmentnamen" Type="String" Nullable="false" />
+          <Property Name="Beschreibung" Type="String" Nullable="false" />
+          <NavigationProperty Name="Koch" Relationship="Model1.KochBesitztEquipment" FromRole="Equipment" ToRole="Koch" />
+          <NavigationProperty Name="Bilder" Relationship="Model1.EquipmentHatEquipmentbild" FromRole="Equipment" ToRole="Bilder" />
+          <Property Name="BilderId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bilder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Bildernamen" Type="String" Nullable="false" />
+          <Property Name="Bilderart" Type="String" Nullable="false" />
+          <Property Name="ImagePath" Type="String" Nullable="false" />
+          <NavigationProperty Name="Koch" Relationship="Model1.KochHatProfilbild" FromRole="Bilder" ToRole="Koch" />
+          <NavigationProperty Name="Rezept" Relationship="Model1.RezeptHatMusterbilder" FromRole="Bilder" ToRole="Rezept" />
+          <NavigationProperty Name="Equipment" Relationship="Model1.EquipmentHatEquipmentbild" FromRole="Bilder" ToRole="Equipment" />
+          <NavigationProperty Name="Kochvorgang" Relationship="Model1.KochvorgangHatVorgangsbilder" FromRole="Bilder" ToRole="Kochvorgang" />
+        </EntityType>
+        <Association Name="KochBesitztEquipment">
+          <End Type="Model1.Equipment" Role="Equipment" Multiplicity="*" />
+          <End Type="Model1.Koch" Role="Koch" Multiplicity="*" />
+        </Association>
+        <Association Name="KochErstelltRezepte">
+          <End Type="Model1.Koch" Role="Koch" Multiplicity="1" />
+          <End Type="Model1.Rezept" Role="Rezept" Multiplicity="*" />
+        </Association>
+        <Association Name="KochZutaten">
+          <End Type="Model1.Koch" Role="Koch" Multiplicity="*" />
+          <End Type="Model1.Zutaten" Role="Zutaten" Multiplicity="*" />
+        </Association>
+        <Association Name="RezeptBestehtausZutaten">
+          <End Type="Model1.Zutaten" Role="Zutaten" Multiplicity="*" />
+          <End Type="Model1.Rezept" Role="Rezept" Multiplicity="*" />
+        </Association>
+        <Association Name="KochvorgangFolgtRezept">
+          <End Type="Model1.Rezept" Role="Rezept" Multiplicity="1" />
+          <End Type="Model1.Kochvorgang" Role="Kochvorgang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rezept">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Kochvorgang">
+              <PropertyRef Name="RezeptId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="KochFührtausKochvorgang">
+          <End Type="Model1.Koch" Role="Koch" Multiplicity="1" />
+          <End Type="Model1.Kochvorgang" Role="Kochvorgang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Koch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Kochvorgang">
+              <PropertyRef Name="KochId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="KochHatProfilbild">
+          <End Type="Model1.Bilder" Role="Bilder" Multiplicity="1" />
+          <End Type="Model1.Koch" Role="Koch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bilder">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Koch">
+              <PropertyRef Name="BilderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RezeptHatMusterbilder">
+          <End Type="Model1.Bilder" Role="Bilder" Multiplicity="*" />
+          <End Type="Model1.Rezept" Role="Rezept" Multiplicity="*" />
+        </Association>
+        <Association Name="EquipmentHatEquipmentbild">
+          <End Type="Model1.Bilder" Role="Bilder" Multiplicity="1" />
+          <End Type="Model1.Equipment" Role="Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bilder">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="BilderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="KochvorgangHatVorgangsbilder">
+          <End Type="Model1.Bilder" Role="Bilder" Multiplicity="*" />
+          <End Type="Model1.Kochvorgang" Role="Kochvorgang" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container">
+    <EntitySetMapping Name="KochSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Koch)">
+        <MappingFragment StoreEntitySet="KochSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Kochname" ColumnName="Kochname" />
+          <ScalarProperty Name="Kochbewertung" ColumnName="Kochbewertung" />
+          <ScalarProperty Name="BilderId" ColumnName="BilderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RezeptSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Rezept)">
+        <MappingFragment StoreEntitySet="RezeptSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Rezeptnamen" ColumnName="Rezeptnamen" />
+          <ScalarProperty Name="Vorgehen" ColumnName="Vorgehen" />
+          <ScalarProperty Name="Rezeptbewertung" ColumnName="Rezeptbewertung" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KochvorgangSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Kochvorgang)">
+        <MappingFragment StoreEntitySet="KochvorgangSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Protokoll" ColumnName="Protokoll" />
+          <ScalarProperty Name="RezeptId" ColumnName="RezeptId" />
+          <ScalarProperty Name="KochId" ColumnName="KochId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ZutatenSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Zutaten)">
+        <MappingFragment StoreEntitySet="ZutatenSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Zutatennamen" ColumnName="Zutatennamen" />
+          <ScalarProperty Name="Kategorie" ColumnName="Kategorie" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EquipmentSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Equipment)">
+        <MappingFragment StoreEntitySet="EquipmentSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Equipmentnamen" ColumnName="Equipmentnamen" />
+          <ScalarProperty Name="Beschreibung" ColumnName="Beschreibung" />
+          <ScalarProperty Name="BilderId" ColumnName="BilderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BilderSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Bilder)">
+        <MappingFragment StoreEntitySet="BilderSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Bildernamen" ColumnName="Bildernamen" />
+          <ScalarProperty Name="Bilderart" ColumnName="Bilderart" />
+          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="KochBesitztEquipment" TypeName="Model1.KochBesitztEquipment" StoreEntitySet="KochBesitztEquipment">
+      <EndProperty Name="Equipment">
+        <ScalarProperty Name="Id" ColumnName="Equipment_Id" />
+      </EndProperty>
+      <EndProperty Name="Koch">
+        <ScalarProperty Name="Id" ColumnName="Koch_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="KochErstelltRezepte" TypeName="Model1.KochErstelltRezepte" StoreEntitySet="RezeptSet">
+      <EndProperty Name="Koch">
+        <ScalarProperty Name="Id" ColumnName="Koch_Id" />
+      </EndProperty>
+      <EndProperty Name="Rezept">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="KochZutaten" TypeName="Model1.KochZutaten" StoreEntitySet="KochZutaten">
+      <EndProperty Name="Koch">
+        <ScalarProperty Name="Id" ColumnName="Koch_Id" />
+      </EndProperty>
+      <EndProperty Name="Zutaten">
+        <ScalarProperty Name="Id" ColumnName="Zutaten_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RezeptBestehtausZutaten" TypeName="Model1.RezeptBestehtausZutaten" StoreEntitySet="RezeptBestehtausZutaten">
+      <EndProperty Name="Zutaten">
+        <ScalarProperty Name="Id" ColumnName="Zutaten_Id" />
+      </EndProperty>
+      <EndProperty Name="Rezept">
+        <ScalarProperty Name="Id" ColumnName="Rezept_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RezeptHatMusterbilder" TypeName="Model1.RezeptHatMusterbilder" StoreEntitySet="RezeptHatMusterbilder">
+      <EndProperty Name="Bilder">
+        <ScalarProperty Name="Id" ColumnName="Bilder_Id" />
+      </EndProperty>
+      <EndProperty Name="Rezept">
+        <ScalarProperty Name="Id" ColumnName="Rezept_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="KochvorgangHatVorgangsbilder" TypeName="Model1.KochvorgangHatVorgangsbilder" StoreEntitySet="KochvorgangHatVorgangsbilder">
+      <EndProperty Name="Bilder">
+        <ScalarProperty Name="Id" ColumnName="Bilder_Id" />
+      </EndProperty>
+      <EndProperty Name="Kochvorgang">
+        <ScalarProperty Name="Id" ColumnName="Kochvorgang_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

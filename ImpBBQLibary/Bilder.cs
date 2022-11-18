@@ -7,25 +7,33 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BBQLibary
+namespace ImpBBQLibary
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Rezept
+    public partial class Bilder
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Rezept()
+        public Bilder()
         {
+            this.Koch = new HashSet<Koch>();
+            this.Rezept = new HashSet<Rezept>();
+            this.Equipment = new HashSet<Equipment>();
             this.Kochvorgang = new HashSet<Kochvorgang>();
         }
     
         public int Id { get; set; }
-        public string Zutatenliste { get; set; }
-        public string Vorgehen { get; set; }
-        public string Holzart { get; set; }
-        public string Equipmentliste { get; set; }
+        public string Bildernamen { get; set; }
+        public string Bilderart { get; set; }
+        public string ImagePath { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Koch> Koch { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Rezept> Rezept { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Equipment> Equipment { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Kochvorgang> Kochvorgang { get; set; }
     }

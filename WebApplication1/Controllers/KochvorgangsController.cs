@@ -6,22 +6,22 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using BBQLibary;
+using ImpBBQLibary;
 
 namespace WebApplication1.Controllers
 {
-    public class KochvorgangController : BaseController
+    public class KochvorgangsController : BaseController
     {
         private Model1Container db = new Model1Container();
 
-        // GET: Kochvorgang
+        // GET: Kochvorgangs
         public ActionResult Index()
         {
-            var kochvorgangSet = db.KochvorgangSet.Include(k => k.Rezept);
+            var kochvorgangSet = db.KochvorgangSet.Include(k => k.Rezept).Include(k => k.Koch);
             return View(kochvorgangSet.ToList());
         }
 
-        // GET: Kochvorgang/Details/5
+        // GET: Kochvorgangs/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,19 +36,20 @@ namespace WebApplication1.Controllers
             return View(kochvorgang);
         }
 
-        // GET: Kochvorgang/Create
+        // GET: Kochvorgangs/Create
         public ActionResult Create()
         {
-            ViewBag.RezeptId = new SelectList(db.RezeptSet, "Id", "Zutatenliste");
+            ViewBag.RezeptId = new SelectList(db.RezeptSet, "Id", "Rezeptnamen");
+            ViewBag.KochId = new SelectList(db.KochSet, "Id", "Kochname");
             return View();
         }
 
-        // POST: Kochvorgang/Create
-        // Aktivieren Sie zum Schutz vor Angriffen durch Overposting die jeweiligen Eigenschaften, mit denen eine Bindung erfolgen soll. 
-        // Weitere Informationen finden Sie unter https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Kochvorgangs/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Protokoll,RezeptId")] Kochvorgang kochvorgang)
+        public ActionResult Create([Bind(Include = "Id,Protokoll,RezeptId,KochId")] Kochvorgang kochvorgang)
         {
             if (ModelState.IsValid)
             {
@@ -57,11 +58,12 @@ namespace WebApplication1.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.RezeptId = new SelectList(db.RezeptSet, "Id", "Zutatenliste", kochvorgang.RezeptId);
+            ViewBag.RezeptId = new SelectList(db.RezeptSet, "Id", "Rezeptnamen", kochvorgang.RezeptId);
+            ViewBag.KochId = new SelectList(db.KochSet, "Id", "Kochname", kochvorgang.KochId);
             return View(kochvorgang);
         }
 
-        // GET: Kochvorgang/Edit/5
+        // GET: Kochvorgangs/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -73,16 +75,17 @@ namespace WebApplication1.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.RezeptId = new SelectList(db.RezeptSet, "Id", "Zutatenliste", kochvorgang.RezeptId);
+            ViewBag.RezeptId = new SelectList(db.RezeptSet, "Id", "Rezeptnamen", kochvorgang.RezeptId);
+            ViewBag.KochId = new SelectList(db.KochSet, "Id", "Kochname", kochvorgang.KochId);
             return View(kochvorgang);
         }
 
-        // POST: Kochvorgang/Edit/5
-        // Aktivieren Sie zum Schutz vor Angriffen durch Overposting die jeweiligen Eigenschaften, mit denen eine Bindung erfolgen soll. 
-        // Weitere Informationen finden Sie unter https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Kochvorgangs/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Protokoll,RezeptId")] Kochvorgang kochvorgang)
+        public ActionResult Edit([Bind(Include = "Id,Protokoll,RezeptId,KochId")] Kochvorgang kochvorgang)
         {
             if (ModelState.IsValid)
             {
@@ -90,11 +93,12 @@ namespace WebApplication1.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.RezeptId = new SelectList(db.RezeptSet, "Id", "Zutatenliste", kochvorgang.RezeptId);
+            ViewBag.RezeptId = new SelectList(db.RezeptSet, "Id", "Rezeptnamen", kochvorgang.RezeptId);
+            ViewBag.KochId = new SelectList(db.KochSet, "Id", "Kochname", kochvorgang.KochId);
             return View(kochvorgang);
         }
 
-        // GET: Kochvorgang/Delete/5
+        // GET: Kochvorgangs/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -109,7 +113,7 @@ namespace WebApplication1.Controllers
             return View(kochvorgang);
         }
 
-        // POST: Kochvorgang/Delete/5
+        // POST: Kochvorgangs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

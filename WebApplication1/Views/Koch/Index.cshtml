@@ -1,30 +1,24 @@
-﻿@model IEnumerable<BBQLibary.Koch>
+﻿@model IEnumerable<ImpBBQLibary.Koch>
 
 @{
-    ViewBag.Title = "Übersicht der Köche";
+    ViewBag.Title = "Index";
 }
-<p>Aktuell Eingeloggt:</p>@ViewBag.User
-<h2>Übersicht</h2>
+
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Koch anlegen", "Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nutzerkennung)
+            @Html.DisplayNameFor(model => model.Kochname)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Equipment)
+            @Html.DisplayNameFor(model => model.Kochbewertung)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Zutaten)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Holz)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Bewertung)
+            @Html.DisplayNameFor(model => model.Bilder.Bildernamen)
         </th>
         <th></th>
     </tr>
@@ -32,19 +26,13 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Nutzerkennung)
+            @Html.DisplayFor(modelItem => item.Kochname)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Equipment)
+            @Html.DisplayFor(modelItem => item.Kochbewertung)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Zutaten)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Holz)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Bewertung)
+            @Html.DisplayFor(modelItem => item.Bilder.Bildernamen)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

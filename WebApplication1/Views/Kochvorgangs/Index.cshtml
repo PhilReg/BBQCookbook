@@ -1,13 +1,13 @@
-﻿@model IEnumerable<BBQLibary.Kochvorgang>
+﻿@model IEnumerable<ImpBBQLibary.Kochvorgang>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Kochvorgänge</h2>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Neuen Kochvorgang anlegen", "Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
@@ -15,7 +15,10 @@
             @Html.DisplayNameFor(model => model.Protokoll)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Rezept.Zutatenliste)
+            @Html.DisplayNameFor(model => model.Rezept.Rezeptnamen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Koch.Kochname)
         </th>
         <th></th>
     </tr>
@@ -26,7 +29,10 @@
             @Html.DisplayFor(modelItem => item.Protokoll)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Rezept.Zutatenliste)
+            @Html.DisplayFor(modelItem => item.Rezept.Rezeptnamen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Koch.Kochname)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

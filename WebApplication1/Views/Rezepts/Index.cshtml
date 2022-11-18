@@ -1,27 +1,24 @@
-﻿@model IEnumerable<BBQLibary.Rezept>
+﻿@model IEnumerable<ImpBBQLibary.Rezept>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Rezepte</h2>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Neues Rezept anlegen", "Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Zutatenliste)
+            @Html.DisplayNameFor(model => model.Rezeptnamen)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Vorgehen)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Holzart)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Equipmentliste)
+            @Html.DisplayNameFor(model => model.Rezeptbewertung)
         </th>
         <th></th>
     </tr>
@@ -29,16 +26,13 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Zutatenliste)
+            @Html.DisplayFor(modelItem => item.Rezeptnamen)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Vorgehen)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Holzart)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Equipmentliste)
+            @Html.DisplayFor(modelItem => item.Rezeptbewertung)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
