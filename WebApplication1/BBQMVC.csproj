@@ -132,9 +132,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\KochController.cs" />
+    <Compile Include="Controllers\KochRezeptController.cs" />
     <Compile Include="Controllers\KochvorgangsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RezeptsController.cs" />
+    <Compile Include="Controllers\ZutatenlisteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -229,6 +231,17 @@
     <Content Include="Views\Kochvorgangs\Index.cshtml" />
     <Content Include="Views\Image\Add.cshtml" />
     <Content Include="Views\Koch\Vorerstellung.cshtml" />
+    <Content Include="Views\Zutatens\Create.cshtml" />
+    <Content Include="Views\Zutatens\Delete.cshtml" />
+    <Content Include="Views\Zutatens\Details.cshtml" />
+    <Content Include="Views\Zutatens\Edit.cshtml" />
+    <Content Include="Views\Zutatens\Index.cshtml" />
+    <Content Include="Views\Zutatenliste\Details.cshtml" />
+    <Content Include="Views\Zutatenliste\Index.cshtml" />
+    <Content Include="Views\Zutatenliste\Zutatenlisteerstellen.cshtml" />
+    <Content Include="Views\KochRezept\Delete.cshtml" />
+    <Content Include="Views\KochRezept\Details.cshtml" />
+    <Content Include="Views\KochRezept.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
