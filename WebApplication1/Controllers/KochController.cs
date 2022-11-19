@@ -18,6 +18,10 @@ namespace WebApplication1.Controllers
         public ActionResult Index()
         {
             var kochSet = db.KochSet.Include(k => k.Bilder);
+            if (hasUser() == false) 
+            {
+                return View(kochSet.ToList());
+            }
             Show(setUser().Id);
             return View(kochSet.ToList());
         }
@@ -128,6 +132,14 @@ namespace WebApplication1.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public ActionResult Vorerstellung()
+        {
+            return View();
+        }
+        public ActionResult UmleitungLogin()
+        {
+            return RedirectToAction("Create", "Koch");
         }
     }
 }

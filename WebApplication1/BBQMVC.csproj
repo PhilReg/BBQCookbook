@@ -228,6 +228,7 @@
     <Content Include="Views\Kochvorgangs\Edit.cshtml" />
     <Content Include="Views\Kochvorgangs\Index.cshtml" />
     <Content Include="Views\Image\Add.cshtml" />
+    <Content Include="Views\Koch\Vorerstellung.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

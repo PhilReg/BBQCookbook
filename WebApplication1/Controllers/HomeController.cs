@@ -29,7 +29,7 @@ namespace WebApplication1.Controllers
         }
         public ActionResult UmleitungRegist()
         {
-            return RedirectToAction("Create", "Koch");
+            return RedirectToAction("Vorerstellung", "Koch");
         }
     }
 }
