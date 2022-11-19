@@ -23,5 +23,13 @@ namespace WebApplication1.Controllers
 
             return View();
         }
+        public ActionResult UmleitungLogin()
+        {
+            return RedirectToAction("Index", "Login");
+        }
+        public ActionResult UmleitungRegist()
+        {
+            return RedirectToAction("Create", "Koch");
+        }
     }
 }

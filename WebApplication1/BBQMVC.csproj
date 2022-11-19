@@ -55,6 +55,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -128,12 +130,31 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\KochController.cs" />
     <Compile Include="Controllers\KochvorgangsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RezeptsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BilderDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BilderDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BilderDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BilderDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BilderDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BilderDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BilderSet.cs">
+      <DependentUpon>BilderDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -146,8 +167,25 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\BilderDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BilderDB.edmx</DependentUpon>
+      <LastGenOutput>BilderDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\BilderDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BilderDB.edmx</DependentUpon>
+      <LastGenOutput>BilderDB.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\BilderDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BilderDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\BilderDB.edmx.diagram">
+      <DependentUpon>BilderDB.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -189,11 +227,11 @@
     <Content Include="Views\Kochvorgangs\Details.cshtml" />
     <Content Include="Views\Kochvorgangs\Edit.cshtml" />
     <Content Include="Views\Kochvorgangs\Index.cshtml" />
+    <Content Include="Views\Image\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
@@ -214,6 +252,9 @@
       <Project>{1c95ffc5-71dd-4a58-b3dc-088b212dc790}</Project>
       <Name>ImpBBQLibary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

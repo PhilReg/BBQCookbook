@@ -18,6 +18,7 @@ namespace WebApplication1.Controllers
         public ActionResult Index()
         {
             var kochSet = db.KochSet.Include(k => k.Bilder);
+            Show(setUser().Id);
             return View(kochSet.ToList());
         }
 

@@ -1,5 +1,6 @@
 ﻿using ImpBBQLibary;
 using System;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace WebApplication1.Controllers
@@ -30,5 +31,15 @@ namespace WebApplication1.Controllers
         {
             Session[UserIdKey] = userId;
         }
+        public ActionResult Show(int id)
+        {
+            Bilder imageModel = new Bilder();
+            using (Model1Container db= new Model1Container())
+            {
+                imageModel = db.BilderSet.Where(x => x.Id == id).FirstOrDefault();
+            }
+            return File(imageModel.ImagePath, "image/jpg");
+        }
     }
+
 }
