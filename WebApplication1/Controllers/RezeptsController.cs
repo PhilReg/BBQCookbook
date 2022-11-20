@@ -38,6 +38,8 @@ namespace WebApplication1.Controllers
         // GET: Rezepts/Create
         public ActionResult Create()
         {
+            setUser();
+            //ViewBag.KochID = new SelectList(db.KochSet, "Id", "Name");
             return View();
         }
 
@@ -46,11 +48,13 @@ namespace WebApplication1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Rezeptnamen,Vorgehen,Rezeptbewertung")] Rezept rezept)
+        public ActionResult Create([Bind(Include = "Id,Rezeptnamen,Vorgehen,Rezeptbewertung,Koch")] Rezept rezept)
         {
             if (ModelState.IsValid)
             {
+                setUser();
                 db.RezeptSet.Add(rezept);
+                db.Entry(rezept).Entity.Koch.Id = LoggedInKoch.Id;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
