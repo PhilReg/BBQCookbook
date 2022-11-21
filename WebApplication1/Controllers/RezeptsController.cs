@@ -12,7 +12,7 @@ namespace WebApplication1.Controllers
 {
     public class RezeptsController : BaseController
     {
-        private Model1Container db = new Model1Container();
+        
 
         // GET: Rezepts
         public ActionResult Index()
@@ -50,11 +50,11 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Rezeptnamen,Vorgehen,Rezeptbewertung,Koch")] Rezept rezept)
         {
+            rezept.Koch = LoggedInKoch;
             if (ModelState.IsValid)
-            {
+            { 
                 setUser();
                 db.RezeptSet.Add(rezept);
-                db.Entry(rezept).Entity.Koch.Id = LoggedInKoch.Id;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
