@@ -1,0 +1,8 @@
+﻿@model ImpBBQLibary.Rezept
+@{
+    ViewBag.Title = "ZutatenHinzufügen";
+}
+
+<h2>ZutatenHinzufügen</h2>
+@ViewBag.Rezept
+@Html.DropDownList("Zutatennamen", (IEnumerable<SelectListItem>)ViewBag.Zutaten)

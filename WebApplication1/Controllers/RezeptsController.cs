@@ -127,5 +127,14 @@ namespace WebApplication1.Controllers
             }
             base.Dispose(disposing);
         }
+        public ActionResult ZutatenAuswählen(int? id)
+        {
+            Rezept aktuell = db.RezeptSet.Find(id);
+            ViewBag.Rezept = aktuell.Rezeptnamen;
+            ViewBag.Zutaten = new SelectList(db.ZutatenSet,"Id", "Zutatennamen");
+
+            return View();
+        }
+           
     }
 }

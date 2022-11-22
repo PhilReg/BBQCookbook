@@ -242,6 +242,7 @@
     <Content Include="Views\KochRezept\Delete.cshtml" />
     <Content Include="Views\KochRezept\Details.cshtml" />
     <Content Include="Views\KochRezept.cshtml" />
+    <Content Include="Views\Rezepts\ZutatenAuswählen.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
