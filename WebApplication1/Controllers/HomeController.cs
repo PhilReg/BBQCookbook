@@ -6,12 +6,12 @@ namespace WebApplication1.Controllers
     {
         public ActionResult Index()
         {
-            setUser();
             return View();
         }
 
         public ActionResult About()
         {
+            setUser();
             ViewBag.Message = "Your application description page.";
 
             return View();
@@ -19,6 +19,7 @@ namespace WebApplication1.Controllers
 
         public ActionResult Contact()
         {
+            setUser();
             ViewBag.Message = "Your contact page.";
 
             return View();

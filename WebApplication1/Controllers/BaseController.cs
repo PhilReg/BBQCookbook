@@ -17,6 +17,7 @@ namespace WebApplication1.Controllers
             Koch res = db.KochSet.Find(userId);
             if (res == null) return null;
             ViewBag.CurrentUser = res.Kochname;
+            ViewData["CurrentUser"] = res.Kochname;
             _LoggedInKoch = res;
             return res;
         }

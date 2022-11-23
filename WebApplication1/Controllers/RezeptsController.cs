@@ -135,6 +135,30 @@ namespace WebApplication1.Controllers
 
             return View();
         }
-           
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ZutatenAuswählen([Bind(Include = "Zutaten")] int id, int Zutatennamen)
+        {
+            Rezept rezept = db.RezeptSet.Include(r => r.Zutaten).FirstOrDefault(x => x.Id==id);
+            Zutaten zutat = db.ZutatenSet.Find(Zutatennamen);
+            rezept.Zutaten.Add(zutat);
+            ViewBag.Zutaten = new SelectList(db.ZutatenSet, "Id", "Zutatennamen");
+            
+            if (ModelState.IsValid)
+            {
+                db.Entry(rezept).State = EntityState.Modified;
+                db.SaveChanges();
+                return View(rezept);
+            }
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        public ActionResult UserRezepte()
+        {
+            var model = from r in db.RezeptSet
+                        where r.Koch.Id == LoggedInKoch.Id
+                        select r;
+            return View(model.ToList());
+        }
+
     }
 }

@@ -12,6 +12,7 @@ namespace WebApplication1.Controllers
 {
     public class LoginController : BaseController
     {
+
         // GET: Login
         public ActionResult Index()
         {
