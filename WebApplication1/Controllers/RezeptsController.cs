@@ -130,8 +130,15 @@ namespace WebApplication1.Controllers
         public ActionResult ZutatenAuswählen(int? id)
         {
             Rezept aktuell = db.RezeptSet.Find(id);
+            var akzutaten = db.RezeptSet.Include(r => r.Zutaten).FirstOrDefault(x => x.Id == id);
+            foreach(Zutaten z in akzutaten.Zutaten)
+                {
+                ViewBag.AktuelleZutaten = ViewBag.AktuelleZutaten+" "+z.Zutatennamen;
+                }
             ViewBag.Rezept = aktuell.Rezeptnamen;
             ViewBag.Zutaten = new SelectList(db.ZutatenSet,"Id", "Zutatennamen");
+            
+            
 
             return View();
         }
@@ -143,12 +150,11 @@ namespace WebApplication1.Controllers
             Zutaten zutat = db.ZutatenSet.Find(Zutatennamen);
             rezept.Zutaten.Add(zutat);
             ViewBag.Zutaten = new SelectList(db.ZutatenSet, "Id", "Zutatennamen");
-            
             if (ModelState.IsValid)
             {
                 db.Entry(rezept).State = EntityState.Modified;
                 db.SaveChanges();
-                return View(rezept);
+                return View();
             }
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
