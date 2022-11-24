@@ -23,22 +23,16 @@ namespace WebApplication1.Controllers
         // GET: Rezepts/Details/5
         public ActionResult Details(int? id)
         {
-            Rezept aktuell = db.RezeptSet.Find(id);
-            var akvorgänge = db.RezeptSet.Include(r => r.Kochvorgang).FirstOrDefault(x => x.Id == id);
-            foreach (Kochvorgang z in akvorgänge.Kochvorgang)
-            {
-                ViewBag.AktuelleVorgänge = ViewBag.AktuelleVorgänge + "; " + z.Koch.Kochname;
-            }
-            ViewBag.Rezept = aktuell.Rezeptnamen;
-            foreach(Zutaten z in akvorgänge.Zutaten)
-            {
-                ViewBag.AktuelleZutaten = ViewBag.AktuelleZutaten + "; " + z.Zutatennamen;
-            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Rezept rezept = db.RezeptSet.Find(id);
+            Rezept rezept= db.RezeptSet
+                .Include(r => r.Kochvorgang)
+                .Include(z=>z.Zutaten)
+                .FirstOrDefault(x => x.Id == id);
+            
+         
             if (rezept == null)
             {
                 return HttpNotFound();
@@ -142,10 +136,7 @@ namespace WebApplication1.Controllers
         {
             Rezept aktuell = db.RezeptSet.Find(id);
             var akzutaten = db.RezeptSet.Include(r => r.Zutaten).FirstOrDefault(x => x.Id == id);
-            foreach(Zutaten z in akzutaten.Zutaten)
-                {
-                ViewBag.AktuelleZutaten = ViewBag.AktuelleZutaten+" "+z.Zutatennamen;
-                }
+            ViewBag.AktuelleZutaten = db.RezeptSet.Include(r => r.Zutaten).FirstOrDefault(x => x.Id == id);
             ViewBag.Rezept = aktuell.Rezeptnamen;
             ViewBag.Zutaten = new SelectList(db.ZutatenSet,"Id", "Zutatennamen");
             

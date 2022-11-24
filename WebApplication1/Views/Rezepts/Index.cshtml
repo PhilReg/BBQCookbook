@@ -1,13 +1,14 @@
-﻿@model IEnumerable<ImpBBQLibary.Rezept>
+﻿@using ImpBBQLibary
+@model IEnumerable<ImpBBQLibary.Rezept>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Alle Rezepte</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Neues Rezept erstellen", "Create")
 </p>
 <table class="table">
     <tr>
@@ -32,30 +33,32 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Rezeptnamen)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Vorgehen)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Rezeptbewertung)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Koch.Kochname)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Zutaten.Count)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Kochvorgang.Count)
-    </td>
-    <td>
-        @Html.ActionLink("Details", "Details", new { id = item.Id }) 
-    </td>
-</tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rezeptnamen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vorgehen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rezeptbewertung)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Koch.Kochname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zutaten.Count)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kochvorgang.Count)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.Id })
+                @Html.ActionLink("Neuen Kochvorgang anlegen", "KochvorgangAnlegen", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>

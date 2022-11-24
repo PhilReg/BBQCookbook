@@ -1,4 +1,5 @@
-﻿@model ImpBBQLibary.Rezept
+﻿@using ImpBBQLibary
+@model ImpBBQLibary.Rezept
 
 @{
     ViewBag.Title = "Details";
@@ -7,9 +8,9 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Rezept: @ViewBag.Rezept</h4>
-    <h4>Folgende Köche haben schon mit diesem Rezept gekocht: @ViewBag.AktuelleVorgänge</h4>
-    <h4>Es enthält folgende Zutaten: @ViewBag.AktuelleZutaten</h4>
+    <h4>Rezept: @Model.Rezeptnamen</h4>
+    <h4>Folgende Köche haben schon mit diesem Rezept gekocht: @Model.Kochvorgang</h4>
+    <h4>Es enthält folgende Zutaten: @Model.Zutaten</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -45,6 +46,13 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+<table class="table">
+    @foreach (Zutaten zutat in Model.Zutaten)
+    {
+        <td>
+            @Html.DisplayFor(modelzutat => zutat.Zutatennamen)
+        </td>
+    }
+</table>
