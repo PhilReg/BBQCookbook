@@ -7,7 +7,9 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Rezept</h4>
+    <h4>Rezept: @ViewBag.Rezept</h4>
+    <h4>Folgende Köche haben schon mit diesem Rezept gekocht: @ViewBag.AktuelleVorgänge</h4>
+    <h4>Es enthält folgende Zutaten: @ViewBag.AktuelleZutaten</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -33,7 +35,13 @@
         <dd>
             @Html.DisplayFor(model => model.Rezeptbewertung)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Koch.Kochname)
+        </dt>
 
+        <dd>
+            @Html.DisplayFor(model => model.Koch.Kochname)
+        </dd>
     </dl>
 </div>
 <p>

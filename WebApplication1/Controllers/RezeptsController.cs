@@ -23,6 +23,17 @@ namespace WebApplication1.Controllers
         // GET: Rezepts/Details/5
         public ActionResult Details(int? id)
         {
+            Rezept aktuell = db.RezeptSet.Find(id);
+            var akvorgänge = db.RezeptSet.Include(r => r.Kochvorgang).FirstOrDefault(x => x.Id == id);
+            foreach (Kochvorgang z in akvorgänge.Kochvorgang)
+            {
+                ViewBag.AktuelleVorgänge = ViewBag.AktuelleVorgänge + "; " + z.Koch.Kochname;
+            }
+            ViewBag.Rezept = aktuell.Rezeptnamen;
+            foreach(Zutaten z in akvorgänge.Zutaten)
+            {
+                ViewBag.AktuelleZutaten = ViewBag.AktuelleZutaten + "; " + z.Zutatennamen;
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -160,10 +171,34 @@ namespace WebApplication1.Controllers
         }
         public ActionResult UserRezepte()
         {
+            if (hasUser() == false)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             var model = from r in db.RezeptSet
                         where r.Koch.Id == LoggedInKoch.Id
                         select r;
             return View(model.ToList());
+        }
+        public ActionResult KochvorgangAnlegen(int id)
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult KochvorgangAnlegen([Bind(Include = "Id,Protokoll,RezeptId,KochId")] int id, Kochvorgang kochvorgang)
+        {
+            kochvorgang.Koch = LoggedInKoch;
+            Rezept rezept = db.RezeptSet.Find(id);
+            kochvorgang.Rezept = rezept;
+
+            if (ModelState.IsValid)
+            {
+                db.KochvorgangSet.Add(kochvorgang);
+                db.SaveChanges();
+                return View();
+            }
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
 
     }

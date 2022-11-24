@@ -33,7 +33,7 @@ namespace WebApplication1.Controllers
             }
             setUserId(Identification.Value);
             setUser();
-            return RedirectToAction("Index");
+            return RedirectToAction("UserRezepte","Rezepts");
         }
     }
 }
