@@ -166,6 +166,7 @@ namespace WebApplication1.Controllers
             {
                 return RedirectToAction("Index", "Login");
             }
+
             var model = from r in db.RezeptSet
                         where r.Koch.Id == LoggedInKoch.Id
                         select r;

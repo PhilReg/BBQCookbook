@@ -5,12 +5,10 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Details: @Model.Rezeptnamen</h2>
 
 <div>
-    <h4>Rezept: @Model.Rezeptnamen</h4>
-    <h4>Folgende Köche haben schon mit diesem Rezept gekocht: @Model.Kochvorgang</h4>
-    <h4>Es enthält folgende Zutaten: @Model.Zutaten</h4>
+
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -48,11 +46,25 @@
 <p>
     @Html.ActionLink("Back to List", "Index")
 </p>
-<table class="table">
+<h2>Liste der Zutaten</h2>
+<ul>
     @foreach (Zutaten zutat in Model.Zutaten)
     {
-        <td>
-            @Html.DisplayFor(modelzutat => zutat.Zutatennamen)
-        </td>
+        <li>
+            @zutat.Zutatennamen
+        </li>
     }
-</table>
+</ul>
+<h2>Liste der Kochvorgänge</h2>
+<ul>
+    @foreach (Kochvorgang kochvorgang in Model.Kochvorgang)
+    {
+        <li>
+            @kochvorgang.Koch.Kochname
+            @Html.ActionLink("Genauer anschauen",
+                             "Details",
+                             "Kochvorgangs",
+                             new { Id = kochvorgang.Id },null)
+        </li>
+    }
+</ul>
