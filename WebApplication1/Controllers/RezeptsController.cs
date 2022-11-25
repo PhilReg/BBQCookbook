@@ -74,7 +74,10 @@ namespace WebApplication1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Rezept rezept = db.RezeptSet.Find(id);
+            Rezept rezept= db.RezeptSet
+                .Include(r => r.Kochvorgang)
+                .Include(z=>z.Zutaten)
+                .FirstOrDefault(x => x.Id == id);
             if (rezept == null)
             {
                 return HttpNotFound();
@@ -166,11 +169,22 @@ namespace WebApplication1.Controllers
             {
                 return RedirectToAction("Index", "Login");
             }
-
             var model = from r in db.RezeptSet
                         where r.Koch.Id == LoggedInKoch.Id
                         select r;
             return View(model.ToList());
+        }
+        public ActionResult UserVorgänge()
+        {
+            if (hasUser() == false)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            var model2 = from x in db.KochvorgangSet
+                         where x.Koch.Id == LoggedInKoch.Id
+                         select x;
+
+            return View(model2.ToList());
         }
         public ActionResult KochvorgangAnlegen(int id)
         {

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ImpBBQLibary.Kochvorgang>
+
+@{
+    ViewBag.Title = "Index";
+}
+<h3>@Html.ActionLink("Meine Rezepte", "UserRezepte")</h3>
+<h2>Meine Vorgänge</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Protokoll)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rezept.Rezeptnamen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Koch.Kochname)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Protokoll)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rezept.Rezeptnamen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Koch.Kochname)
+            </td>
+            <td>
+                @Html.ActionLink("Details", 
+                                 "Details",
+                                 "Kochvorgangs",
+                                 new { id = item.Id },null)|
+                @Html.ActionLink("Edit", "Edit","Kochvorgangs", new { id = item.Id },null) |
+                @Html.ActionLink("Delete", "Delete","Kochvorgangs", new { id = item.Id },null)|
+            </td>
+
+        </tr>
+    }
+
+</table>
