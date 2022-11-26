@@ -22,7 +22,8 @@
             @Html.DisplayFor(modelItem => item.Kochname)
         </td>
         <td>
-            @Html.ActionLink("User auswählen", "Select", new { Identification = item.Id })
+            @Html.ActionLink("User auswählen", "Select", new { Identification = item.Id })|
+            @Html.ActionLink("User löschen", "Delete", "Koch", new { id = item.Id }, null)
 
         </td>
     </tr>

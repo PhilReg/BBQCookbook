@@ -169,6 +169,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Stockiamge223128311.jpg" />
+    <Content Include="Images\WSM222125264.jpg" />
     <Content Include="Models\BilderDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>BilderDB.edmx</DependentUpon>
@@ -246,10 +248,11 @@
     <Content Include="Views\Rezepts\UserRezepte.cshtml" />
     <Content Include="Views\Rezepts\KochvorgangAnlegen.cshtml" />
     <Content Include="Views\Rezepts\UserVorgänge.cshtml" />
+    <Content Include="Views\Rezepts\ZutatenLöschen.cshtml" />
+    <Content Include="Views\Rezepts\BildHinzufügen.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

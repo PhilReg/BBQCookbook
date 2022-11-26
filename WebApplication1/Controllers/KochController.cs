@@ -22,7 +22,6 @@ namespace WebApplication1.Controllers
             {
                 return View(kochSet.ToList());
             }
-            Show(setUser().Id);
             return View(kochSet.ToList());
         }
 

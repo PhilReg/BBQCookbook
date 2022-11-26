@@ -137,15 +137,18 @@ namespace WebApplication1.Controllers
         }
         public ActionResult ZutatenAuswählen(int? id)
         {
-            Rezept aktuell = db.RezeptSet.Find(id);
+            Rezept rezept = db.RezeptSet
+                            .Include(r => r.Kochvorgang)
+                            .Include(z => z.Zutaten)
+                            .FirstOrDefault(x => x.Id == id);
             var akzutaten = db.RezeptSet.Include(r => r.Zutaten).FirstOrDefault(x => x.Id == id);
             ViewBag.AktuelleZutaten = db.RezeptSet.Include(r => r.Zutaten).FirstOrDefault(x => x.Id == id);
-            ViewBag.Rezept = aktuell.Rezeptnamen;
+            ViewBag.Rezept = rezept.Rezeptnamen;
             ViewBag.Zutaten = new SelectList(db.ZutatenSet,"Id", "Zutatennamen");
             
             
 
-            return View();
+            return View(rezept);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -159,7 +162,7 @@ namespace WebApplication1.Controllers
             {
                 db.Entry(rezept).State = EntityState.Modified;
                 db.SaveChanges();
-                return View();
+                return View(rezept);
             }
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
@@ -169,6 +172,8 @@ namespace WebApplication1.Controllers
             {
                 return RedirectToAction("Index", "Login");
             }
+            Bilder bilder = db.BilderSet.FirstOrDefault(x => x.Id == LoggedInKoch.BilderId);
+            ViewBag.Image = bilder.ImagePath.Replace("~","");
             var model = from r in db.RezeptSet
                         where r.Koch.Id == LoggedInKoch.Id
                         select r;
@@ -206,6 +211,36 @@ namespace WebApplication1.Controllers
             }
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
+        public ActionResult ZutatenLöschen(int? id)
+        {
+            Rezept rezept = db.RezeptSet
+                            .Include(r => r.Kochvorgang)
+                            .Include(z => z.Zutaten)
+                            .FirstOrDefault(x => x.Id == id);
+            var akzutaten = db.RezeptSet.Include(r => r.Zutaten).FirstOrDefault(x => x.Id == id);
+            ViewBag.AktuelleZutaten = db.RezeptSet.Include(r => r.Zutaten).FirstOrDefault(x => x.Id == id);
+            ViewBag.Rezept = rezept.Rezeptnamen;
+            ViewBag.Zutaten = new SelectList(rezept.Zutaten, "Id", "Zutatennamen");
 
+
+
+            return View(rezept);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ZutatenLöschen([Bind(Include = "Zutaten")] int id, int Zutatennamen)
+        {
+            Rezept rezept = db.RezeptSet.Include(r => r.Zutaten).FirstOrDefault(x => x.Id == id);
+            Zutaten zutat = db.ZutatenSet.Find(Zutatennamen);
+            rezept.Zutaten.Remove(zutat);
+            ViewBag.Zutaten = new SelectList(db.ZutatenSet, "Id", "Zutatennamen");
+            if (ModelState.IsValid)
+            {
+                db.Entry(rezept).State = EntityState.Modified;
+                db.SaveChanges();
+                return View(rezept);
+            }
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
     }
 }

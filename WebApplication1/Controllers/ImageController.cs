@@ -8,7 +8,7 @@ using ImpBBQLibary;
 
 namespace WebApplication1.Controllers
 {
-    public class ImageController : Controller
+    public class ImageController : BaseController
     {
         [HttpGet]
         public ActionResult Add()

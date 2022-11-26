@@ -13,7 +13,7 @@
         </li>
     }
 </ul>
-<h2>Zutaten Hinzufügen</h2>
+<h2>Zutaten Löschen</h2>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -38,5 +38,4 @@
         </div>
     </div>
 }
-<h2>Zutaten @Html.ActionLink("Löschen", "ZutatenLöschen", new { id = Model.Id })</h2>
-
+<h2>Zutaten @Html.ActionLink("Hinzfügen", "ZutatenAuswählen", new { id = Model.Id })</h2>
