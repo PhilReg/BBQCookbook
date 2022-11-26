@@ -16,7 +16,7 @@ namespace WebApplication1.Controllers
             return View();
         }
        [HttpPost]
-        public ActionResult Add(Bilder imageModel)
+        public ActionResult Add(Bilder imageModel,int? source)
             {
             string fileName = Path.GetFileNameWithoutExtension(imageModel.ImageFile.FileName);
             string extension = Path.GetExtension(imageModel.ImageFile.FileName);

@@ -68,3 +68,10 @@
         </li>
     }
 </ul>
+<h2>Musterbilder</h2>
+    @foreach (Bilder bilder in Model.Bilder)
+    {
+            <img src="@bilder.ImagePath.Replace("~", "")"alt=""style="width:150px;height:150px" />
+    }
+
+

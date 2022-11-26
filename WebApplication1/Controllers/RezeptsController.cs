@@ -30,9 +30,9 @@ namespace WebApplication1.Controllers
             Rezept rezept= db.RezeptSet
                 .Include(r => r.Kochvorgang)
                 .Include(z=>z.Zutaten)
+                .Include(b=>b.Bilder)
                 .FirstOrDefault(x => x.Id == id);
-            
-         
+
             if (rezept == null)
             {
                 return HttpNotFound();
@@ -239,6 +239,26 @@ namespace WebApplication1.Controllers
                 db.Entry(rezept).State = EntityState.Modified;
                 db.SaveChanges();
                 return View(rezept);
+            }
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        public ActionResult BildHinzufügen(int? id)
+        {
+            ViewBag.UserImages = new SelectList(db.BilderSet, "Id", "Bildernamen");
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult BildHinzufügen([Bind(Include = "Zutaten")] int id,int Bildernamen)
+        {
+            Rezept rezept = db.RezeptSet.Include(r => r.Zutaten).FirstOrDefault(x => x.Id == id);
+            Bilder bilder = db.BilderSet.Find(Bildernamen);
+            rezept.Bilder.Add(bilder);
+            if (ModelState.IsValid)
+            {
+                db.Entry(rezept).State = EntityState.Modified;
+                db.SaveChanges();
+                return View();
             }
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
