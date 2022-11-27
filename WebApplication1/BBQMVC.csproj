@@ -250,6 +250,7 @@
     <Content Include="Views\Rezepts\UserVorgänge.cshtml" />
     <Content Include="Views\Rezepts\ZutatenLöschen.cshtml" />
     <Content Include="Views\Rezepts\BildHinzufügen.cshtml" />
+    <Content Include="Views\Rezepts\BildLöschen.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

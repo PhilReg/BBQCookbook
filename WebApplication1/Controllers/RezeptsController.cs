@@ -249,7 +249,7 @@ namespace WebApplication1.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult BildHinzufügen([Bind(Include = "Zutaten")] int id,int Bildernamen)
+        public ActionResult BildHinzufügen([Bind(Include = "Bildernamen")] int id,int Bildernamen)
         {
             Rezept rezept = db.RezeptSet.Include(r => r.Zutaten).FirstOrDefault(x => x.Id == id);
             Bilder bilder = db.BilderSet.Find(Bildernamen);
@@ -258,7 +258,28 @@ namespace WebApplication1.Controllers
             {
                 db.Entry(rezept).State = EntityState.Modified;
                 db.SaveChanges();
-                return View();
+                return RedirectToAction("BildHinzufügen");
+            }
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        public ActionResult BildLöschen(int? id)
+        {
+            Rezept rezept = db.RezeptSet.Include(b=>b.Bilder).FirstOrDefault(x => x.Id == id);
+            ViewBag.UserImages = new SelectList(rezept.Bilder, "Id", "Bildernamen");
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult BildLöschen([Bind(Include = "Bildernamen")] int id, int Bildernamen)
+        {
+            Rezept rezept = db.RezeptSet.Include(r => r.Zutaten).FirstOrDefault(x => x.Id == id);
+            Bilder bilder = db.BilderSet.Find(Bildernamen);
+            rezept.Bilder.Remove(bilder);
+            if (ModelState.IsValid)
+            {
+                db.Entry(rezept).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("BildLöschen");
             }
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }

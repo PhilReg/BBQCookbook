@@ -3,8 +3,7 @@
 @{
     ViewBag.Title = "BildHinzufügen";
 }
-<h2>Bild noch nicht vorhanden? Hier hochladen @Html.ActionLink("Bild hochladen","Add","Image")</h2>
-<h2>BildHinzufügen</h2>
+<h2>Bild Löschen</h2>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -29,4 +28,4 @@
         </div>
     </div>
 }
-<h2>Zurück zum Rezept @Html.ActionLink("Zurück","UserRezepte")</h2>
+<h2>Zurück zum Rezept @Html.ActionLink("Zurück", "UserRezepte")</h2>
